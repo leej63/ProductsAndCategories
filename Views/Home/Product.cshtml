@@ -18,7 +18,7 @@
             <form asp-action="AddCategory" asp-controller="Home" method="post">
                 <label>Add Category:</label><br>
                 <input type="hidden" asp-for="ProductId" value="@ViewBag.product.ProductId">
-                <select asp-for="CategoryId">
+                <select asp-for="CategoryId" style="width: 40%;">
                     @{
                         foreach(Category category in ViewBag.categories)
                         {
