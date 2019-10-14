@@ -1,0 +1,33 @@
+@model ProductsAndCategories.Models.Association
+
+<h1 class="text-center">@ViewBag.category.Name</h1>
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <h3>Products:</h3>
+            <ul>
+                @foreach(Association product in ViewBag.category.Products)
+                {
+                    <li style="list-style-position: inside;">@product.Product.Name</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="text-center">
+            <form asp-action="AddProduct" asp-controller="Home" method="post">
+                <label>Add Product:</label><br>
+                <input type="hidden" asp-for="CategoryId" value="@ViewBag.category.CategoryId">
+                <select asp-for="ProductId">
+                    @{
+                        foreach(Product product in ViewBag.products)
+                        {
+                            <option value="@product.ProductId">@product.Name</option>
+                        }
+                    }
+                </select><br>
+                <button class="btn btn-success my-2" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
